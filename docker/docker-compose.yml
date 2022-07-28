@@ -12,9 +12,6 @@ services:
     restart: always
     networks:
       default:
-#    volumes:
-#      - /data/jupyter/notebook:/home/evidnet/work:z
-#      - /data/jupyter/data:/home/evidnet/data:z
     shm_size: "4gb"
 
 networks:
