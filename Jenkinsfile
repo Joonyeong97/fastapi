@@ -49,7 +49,7 @@ pipeline {
           agent any
           steps {
             echo 'Deploy Docker '
-            sh 'docker-compose -f ./docker/docker-compose.yml up -d'
+            sh '/usr/bin/docker-compose -f ./docker/docker-compose.yml up -d'
           }
           post {
             failure {
