@@ -44,5 +44,21 @@ pipeline {
           }
         }
 
+        // docker Deploy
+        stage('Deploy Docker') {
+          agent any
+          steps {
+            echo 'Push Docker'
+            script {
+                sh docker-compose up -d ./docker/docker-compose.yml
+            }
+          }
+          post {
+            failure {
+              error 'This pipeline stops here...'
+            }
+          }
+        }
+
     }
 }
