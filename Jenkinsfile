@@ -4,6 +4,7 @@ pipeline {
     environment {
         imagename = "joon09/fastapi-torch"
         registryCredential = 'joon09'
+        version = '1.1'
         dockerImage = ''
     }
 
@@ -32,7 +33,7 @@ pipeline {
             echo 'Push Docker'
             script {
                 docker.withRegistry( '', registryCredential) {
-                    dockerImage.push("1.0")  // ex) "1.0"
+                    dockerImage.push(version)  // ex) "1.0"
                 }
             }
           }
