@@ -31,7 +31,7 @@ pipeline {
           agent any
           steps {
             echo 'Deploy Docker '
-            sh 'tag=version docker-compose -f ./docker/docker-compose.yml up -d'
+            sh 'tag=${version} docker-compose -f ./docker/docker-compose.yml up -d'
           }
           post {
             failure {
