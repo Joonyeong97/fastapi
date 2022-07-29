@@ -48,10 +48,8 @@ pipeline {
         stage('Deploy Docker') {
           agent any
           steps {
-            echo 'Push Docker'
-            script {
-              sh docker-compose -f ./docker/docker-compose.yml up -d
-            }
+            echo 'Deploy Docker'
+            sh 'docker-compose -f ./docker/docker-compose.yml up -d'
           }
           post {
             failure {
