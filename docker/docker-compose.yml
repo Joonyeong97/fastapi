@@ -3,7 +3,7 @@ version: '2.3'
 services:
 
   fast-api:
-    image: docker.io/joon09/fastapi-torch:1.0
+    image: docker.io/joon09/fastapi-torch:${tag}
     container_name: fast-api
     ports:
       - "8000:80"

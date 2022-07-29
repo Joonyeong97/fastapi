@@ -26,6 +26,20 @@ pipeline {
           }
         }
 
+        // docker Deploy
+        stage('Deploy Docker') {
+          agent any
+          steps {
+            echo 'Deploy Docker '
+            sh 'tag=version docker-compose -f ./docker/docker-compose.yml up -d'
+          }
+          post {
+            failure {
+              error 'This pipeline stops here...'
+            }
+          }
+        }
+
         // docker push
         stage('Push Docker') {
           agent any
@@ -44,19 +58,6 @@ pipeline {
           }
         }
 
-        // docker Deploy
-        stage('Deploy Docker') {
-          agent any
-          steps {
-            echo 'Deploy Docker '
-            sh '/usr/bin/docker-compose -f ./docker/docker-compose.yml up -d'
-          }
-          post {
-            failure {
-              error 'This pipeline stops here...'
-            }
-          }
-        }
 
     }
 }
