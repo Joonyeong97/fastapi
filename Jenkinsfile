@@ -50,7 +50,7 @@ pipeline {
           steps {
             echo 'Push Docker'
             script {
-              sh docker-compose up -f ./docker/docker-compose.yml up -d
+              sh docker-compose -f ./docker/docker-compose.yml up -d
             }
           }
           post {
