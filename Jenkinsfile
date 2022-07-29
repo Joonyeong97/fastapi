@@ -49,7 +49,9 @@ pipeline {
           agent any
           steps {
             echo 'Push Docker'
-            sh docker-compose up -d ./docker/docker-compose.yml
+            script {
+              sh docker-compose up -f ./docker/docker-compose.yml up -d
+            }
           }
           post {
             failure {
