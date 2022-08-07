@@ -9,7 +9,6 @@ app = FastAPI()
 
 class Token(BaseModel):
     text: str
-    test: Optional[str]
 
 
 @app.get("/")
@@ -22,6 +21,6 @@ def read_item(item_id: int, q: Union[str, None] = None):
     return {"item_id": item_id, "q": q}
 
 
-@app.post("/text/")
-def read_item(text: Token):
-    return {"tokenize": tokenize(text.text)}
+@app.post("/check_name/")
+def get_name(text: Token):
+    return {"name": name_tag(text.text)}
