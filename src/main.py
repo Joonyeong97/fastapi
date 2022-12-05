@@ -5,11 +5,12 @@ from functions import *
 from pydantic import BaseModel
 
 app = FastAPI()
+model_name = 'joon09/kor-naver-ner-name'
 
+ner_model = Ner(model_name)
 
 class Token(BaseModel):
-    text: str
-    text2: Optional[str]
+    text: list
 
 
 @app.get("/")
@@ -22,6 +23,6 @@ def read_item(item_id: int, q: Union[str, None] = None):
     return {"item_id": item_id, "q": q}
 
 
-@app.post("/check_name/")
+@app.post("/ner_test/")
 def get_name(text: Token):
-    return {"name": name_tag(text.text)}
+    return {"tokens": ner_model(text.text)}
