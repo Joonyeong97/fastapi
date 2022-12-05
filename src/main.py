@@ -9,6 +9,7 @@ app = FastAPI()
 
 class Token(BaseModel):
     text: str
+    text2: Optional[str]
 
 
 @app.get("/")
